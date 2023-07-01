@@ -6,7 +6,7 @@
 
     <changeSet id="202307011509-1" author="joao">
         <createTable tableName="trip">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="pick-up-id" type="bigint"/>
@@ -18,8 +18,35 @@
         <addForeignKeyConstraint baseTableName="trip" baseColumnNames="pick-up-id" constraintName="fk_zone_pickup" referencedTableName="zone"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="trip" baseColumnNames="pick-up-id" constraintName="fk_zone_dropoff" referencedTableName="zone"
+        <addForeignKeyConstraint baseTableName="trip" baseColumnNames="drop-off-id" constraintName="fk_zone_dropoff" referencedTableName="zone"
                                  referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="202307011509-1-data" author="joao">
+        <loadData
+                file="liquibase/data/shorter_tripdata.csv"
+                tableName="trip">
+            <column name="pick-up-id" header="PULocationID" type="numeric"/>
+            <column name="drop-off-id" header="DOLocationID" type="numeric"/>
+            <column name="pick-up-date" header="tpep_pickup_datetime" type="datetime"/>
+            <column name="drop-off-date" header="tpep_dropoff_datetime" type="datetime"/>
+
+            <column name="RatecodeID" header="RatecodeID" type="skip"/>
+            <column name="fare_amount" header="fare_amount" type="skip"/>
+            <column name="congestion_surcharge" header="congestion_surcharge" type="skip"/>
+            <column name="VendorID" header="VendorID" type="skip"/>
+            <column name="passenger_count" header="passenger_count" type="skip"/>
+            <column name="tolls_amount" header="tolls_amount" type="skip"/>
+            <column name="improvement_surcharge" header="improvement_surcharge" type="skip"/>
+            <column name="trip_distance" header="trip_distance" type="skip"/>
+            <column name="store_and_fwd_flag" header="store_and_fwd_flag" type="skip"/>
+            <column name="payment_type" header="payment_type" type="skip"/>
+            <column name="total_amount" header="total_amount" type="skip"/>
+            <column name="extra" header="extra" type="skip"/>
+            <column name="tip_amount" header="tip_amount" type="skip"/>
+            <column name="mta_tax" header="mta_tax" type="skip"/>
+            <column name="airport_fee" header="airport_fee" type="skip"/>
+        </loadData>
     </changeSet>
 
 </databaseChangeLog>

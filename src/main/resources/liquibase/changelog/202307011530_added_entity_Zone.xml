@@ -15,4 +15,16 @@
         </createTable>
     </changeSet>
 
+
+    <changeSet id="202307011514-1-data" author="joao">
+        <loadData
+                file="liquibase/data/zones.csv"
+                tableName="zone">
+            <column name="id" header="LocationID" type="numeric"/>
+            <column name="borough" header="Borough" type="string"/>
+            <column name="zone" header="Zone" type="string"/>
+            <column name="service_zone" type="string"/>
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>
