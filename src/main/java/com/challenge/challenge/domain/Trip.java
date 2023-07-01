@@ -17,9 +17,13 @@ public class Trip {
 
     @Id
     private Long id;
-    @Column(name = "pick-up")
-    private Instant pickUp;
-    @Column(name = "drop-off")
-    private Instant dropOff;
+    @Column(name = "pick-up-id")
+    private Long pickUpId;
+    @Column(name = "drop-off-id")
+    private Long dropOffId;
+    @Column(name = "pick-up-date")
+    private Instant pickUpDate;
+    @Column(name = "drop-off-date")
+    private Instant dropOffDate;
 
 }
