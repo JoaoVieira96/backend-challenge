@@ -33,11 +33,15 @@ public class StatisticResourceImpl implements StatisticResource {
 
     @Override
     public ResponseEntity<SumZoneTrips> zoneTrips(Long zone, Instant date) {
+        log.info("zoneTrips | REST request to calculate pickups and drop-offs on zone [{}] on date [{}]", zone, date.toString());
+
         return null;
     }
 
     @Override
     public ResponseEntity<Object> listYellow() {
+        log.info("listYellow | REST request to evaluate data on yellow trips");
+
         return null;
     }
 
