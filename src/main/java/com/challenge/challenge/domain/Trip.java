@@ -3,6 +3,7 @@ package com.challenge.challenge.domain;
 import lombok.*;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.Instant;
 
@@ -11,6 +12,7 @@ import java.time.Instant;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Trip {
 
     @Id

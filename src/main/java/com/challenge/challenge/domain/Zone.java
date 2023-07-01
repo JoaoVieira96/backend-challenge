@@ -3,6 +3,7 @@ package com.challenge.challenge.domain;
 import lombok.*;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Getter
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Zone {
 
     @Id
