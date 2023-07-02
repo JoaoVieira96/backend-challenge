@@ -3,12 +3,13 @@ package com.challenge.challenge.web.rest;
 import com.challenge.challenge.domain.exceptions.HttpException;
 import com.challenge.challenge.domain.responses.SumZoneTrips;
 import com.challenge.challenge.domain.responses.TopZones;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.Instant;
+import java.util.Date;
 
 public interface StatisticResource {
 
@@ -24,7 +25,7 @@ public interface StatisticResource {
             produces = {"application/json"},
             method = {RequestMethod.GET}
     )
-    ResponseEntity<SumZoneTrips> zoneTrips(@RequestParam(name = "zone") Long zone, @RequestParam(name = "date") Instant date);
+    ResponseEntity<SumZoneTrips> zoneTrips(@RequestParam(name = "zone") Long zone, @RequestParam(name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) throws HttpException;
 
 
     // ToDo

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
@@ -20,4 +21,7 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 
     List<Trip> findAllByPickUpId(Long id);
     List<Trip> findAllByDropOffId(Long id);
+
+    List<Trip> findAllByPickUpDateIsAfterAndPickUpDateIsBefore(Instant date, Instant date2);
+    List<Trip> findAllByDropOffDateIsAfterAndDropOffDateIsBefore(Instant date, Instant date2);
 }

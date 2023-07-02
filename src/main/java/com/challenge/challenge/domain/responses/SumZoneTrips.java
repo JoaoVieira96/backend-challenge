@@ -3,8 +3,6 @@ package com.challenge.challenge.domain.responses;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import java.time.Instant;
-
 @Getter
 @Setter
 @ToString
@@ -13,7 +11,7 @@ import java.time.Instant;
 public class SumZoneTrips {
 
     private String zone;
-    private Instant date;
+    private String date;
     @JsonProperty("pu")
     private Long pickUps;
     @JsonProperty("po")

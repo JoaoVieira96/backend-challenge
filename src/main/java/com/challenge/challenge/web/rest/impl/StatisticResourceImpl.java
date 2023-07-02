@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Instant;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -33,7 +33,7 @@ public class StatisticResourceImpl implements StatisticResource {
     }
 
     @Override
-    public ResponseEntity<SumZoneTrips> zoneTrips(Long zone, Instant date) {
+    public ResponseEntity<SumZoneTrips> zoneTrips(Long zone, Date date) throws HttpException {
         log.info("zoneTrips | REST request to calculate pickups and drop-offs on zone [{}] on date [{}]", zone, date.toString());
         ResponseEntity<SumZoneTrips> response = statisticService.zoneTrips(zone, date);
 

@@ -14,11 +14,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 @Service
 public class StatisticService {
@@ -79,9 +78,26 @@ public class StatisticService {
         return ResponseEntity.ok(topZones);
     }
 
-    public ResponseEntity<SumZoneTrips> zoneTrips(Long zone, Instant date) {
+    public ResponseEntity<SumZoneTrips> zoneTrips(Long zoneId, Date date) throws HttpException {
+        List<Trip> pickUpList = tripRepository.findAllByPickUpDateIsAfterAndPickUpDateIsBefore(date.toInstant(), date.toInstant().minus(-1, ChronoUnit.DAYS));
+        List<Trip> dropOffList = tripRepository.findAllByDropOffDateIsAfterAndDropOffDateIsBefore(date.toInstant(), date.toInstant().minus(-1, ChronoUnit.DAYS));
+        Optional<Zone> zone = zoneRepository.findById(zoneId);
 
-        return null;
+        if (zone.isEmpty()) {
+            throw new HttpException(HttpStatus.BAD_REQUEST, "Zone does not exist.", "The zone you entered does not exist");
+        }
+
+        SumZoneTrips sumZoneTrips = new SumZoneTrips();
+        sumZoneTrips.setZone(zone.get().getZone());
+        sumZoneTrips.setDropOffs(Long.valueOf(dropOffList.size()));
+        sumZoneTrips.setPickUps(Long.valueOf(pickUpList.size()));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                .withZone(ZoneId.systemDefault());
+
+        sumZoneTrips.setDate(formatter.format(date.toInstant()));
+
+        return ResponseEntity.ok(sumZoneTrips);
     }
 
     public ResponseEntity<Object> listYellow() {
