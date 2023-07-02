@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "b57339e0-3d36-4999-8eaf-6c5612febb6e",
+		"name": "Statistics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Top zones",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/csv;charset=UTF-8",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/challenge/api/v1/top-zones?order=dropoffs",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"challenge",
+						"api",
+						"v1",
+						"top-zones"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "dropoffs"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Zone trips",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/challenge/api/v1/zone-trips?zone=1&date=2023-01-01",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"challenge",
+						"api",
+						"v1",
+						"zone-trips"
+					],
+					"query": [
+						{
+							"key": "zone",
+							"value": "1"
+						},
+						{
+							"key": "date",
+							"value": "2023-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
