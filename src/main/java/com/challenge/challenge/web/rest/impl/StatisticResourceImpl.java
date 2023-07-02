@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Date;
 
@@ -41,11 +42,11 @@ public class StatisticResourceImpl implements StatisticResource {
     }
 
     @Override
-    public ResponseEntity<Object> listYellow() {
+    public ResponseEntity<Object> listYellow(Pageable pageable) {
         log.info("listYellow | REST request to evaluate data on yellow trips");
-        ResponseEntity<Object> response = statisticService.listYellow();
+        ResponseEntity<Object> response = statisticService.listYellow(pageable);
 
-        return null;
+        return response;
     }
 
     @ExceptionHandler(HttpException.class)

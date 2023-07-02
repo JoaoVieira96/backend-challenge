@@ -10,6 +10,7 @@ import com.challenge.challenge.repository.TripRepository;
 import com.challenge.challenge.repository.ZoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -100,8 +101,8 @@ public class StatisticService {
         return ResponseEntity.ok(sumZoneTrips);
     }
 
-    public ResponseEntity<Object> listYellow() {
+    public ResponseEntity<Object> listYellow(Pageable pageable) {
 
-        return null;
+        return ResponseEntity.ok().build();
     }
 }

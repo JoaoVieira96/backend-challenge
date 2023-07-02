@@ -1,0 +1,96 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080/challenge
+    description: Generated server url
+paths:
+  /api/v1/zone-trips:
+    get:
+      tags:
+        - statistic-resource-impl
+      operationId: zoneTrips
+      parameters:
+        - name: zone
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SumZoneTrips'
+  /api/v1/top-zones:
+    get:
+      tags:
+        - statistic-resource-impl
+      operationId: topZones
+      parameters:
+        - name: order
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopZones'
+  /api/v1/list-yellow:
+    get:
+      tags:
+        - statistic-resource-impl
+      operationId: listYellow
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    SumZoneTrips:
+      type: object
+      properties:
+        zone:
+          type: string
+        date:
+          type: string
+        pu:
+          type: integer
+          format: int64
+        po:
+          type: integer
+          format: int64
+    TopZones:
+      type: object
+      properties:
+        zoneTotalList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ZoneTotal'
+    ZoneTotal:
+      type: object
+      properties:
+        zone:
+          type: string
+        pu_total:
+          type: integer
+          format: int64
+        do_total:
+          type: integer
+          format: int64
