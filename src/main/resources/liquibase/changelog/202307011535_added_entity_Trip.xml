@@ -9,16 +9,16 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="pick-up-id" type="bigint"/>
-            <column name="drop-off-id" type="bigint"/>
-            <column name="pick-up-date" type="datetime"/>
-            <column name="drop-off-date" type="datetime"/>
+            <column name="pick_up_id" type="bigint"/>
+            <column name="drop_off_id" type="bigint"/>
+            <column name="pick_up_date" type="datetime"/>
+            <column name="drop_off_date" type="datetime"/>
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="trip" baseColumnNames="pick-up-id" constraintName="fk_zone_pickup" referencedTableName="zone"
+        <addForeignKeyConstraint baseTableName="trip" baseColumnNames="pick_up_id" constraintName="fk_zone_pickup" referencedTableName="zone"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="trip" baseColumnNames="drop-off-id" constraintName="fk_zone_dropoff" referencedTableName="zone"
+        <addForeignKeyConstraint baseTableName="trip" baseColumnNames="drop_off_id" constraintName="fk_zone_dropoff" referencedTableName="zone"
                                  referencedColumnNames="id"/>
     </changeSet>
 
@@ -26,10 +26,10 @@
         <loadData
                 file="liquibase/data/shorter_tripdata.csv"
                 tableName="trip">
-            <column name="pick-up-id" header="PULocationID" type="numeric"/>
-            <column name="drop-off-id" header="DOLocationID" type="numeric"/>
-            <column name="pick-up-date" header="tpep_pickup_datetime" type="datetime"/>
-            <column name="drop-off-date" header="tpep_dropoff_datetime" type="datetime"/>
+            <column name="pick_up_id" header="PULocationID" type="numeric"/>
+            <column name="drop_off_id" header="DOLocationID" type="numeric"/>
+            <column name="pick_up_date" header="tpep_pickup_datetime" type="datetime"/>
+            <column name="drop_off_date" header="tpep_dropoff_datetime" type="datetime"/>
 
             <column name="RatecodeID" header="RatecodeID" type="skip"/>
             <column name="fare_amount" header="fare_amount" type="skip"/>

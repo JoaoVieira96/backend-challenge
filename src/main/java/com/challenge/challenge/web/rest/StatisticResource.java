@@ -1,5 +1,6 @@
 package com.challenge.challenge.web.rest;
 
+import com.challenge.challenge.domain.exceptions.HttpException;
 import com.challenge.challenge.domain.responses.SumZoneTrips;
 import com.challenge.challenge.domain.responses.TopZones;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public interface StatisticResource {
             produces = {"application/json"},
             method = {RequestMethod.GET}
     )
-    ResponseEntity<TopZones> topZones(@RequestParam(name = "order") String order);
+    ResponseEntity<TopZones> topZones(@RequestParam(name = "order") String order) throws HttpException;
 
     @RequestMapping(
             path = {"/zone-trips"},

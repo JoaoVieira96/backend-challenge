@@ -25,22 +25,25 @@ public class StatisticResourceImpl implements StatisticResource {
     private StatisticService statisticService;
 
     @Override
-    public ResponseEntity<TopZones> topZones(String order) {
+    public ResponseEntity<TopZones> topZones(String order) throws HttpException {
         log.info("topZones | REST request to list the first 5 top zones based on [{}]", order);
+        ResponseEntity<TopZones> response = statisticService.topZones(order);
 
-        return null;
+        return response;
     }
 
     @Override
     public ResponseEntity<SumZoneTrips> zoneTrips(Long zone, Instant date) {
         log.info("zoneTrips | REST request to calculate pickups and drop-offs on zone [{}] on date [{}]", zone, date.toString());
+        ResponseEntity<SumZoneTrips> response = statisticService.zoneTrips(zone, date);
 
-        return null;
+        return response;
     }
 
     @Override
     public ResponseEntity<Object> listYellow() {
         log.info("listYellow | REST request to evaluate data on yellow trips");
+        ResponseEntity<Object> response = statisticService.listYellow();
 
         return null;
     }
