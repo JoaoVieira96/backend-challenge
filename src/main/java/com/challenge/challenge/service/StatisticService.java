@@ -102,7 +102,6 @@ public class StatisticService {
     }
 
     public ResponseEntity<Object> listYellow(Pageable pageable) {
-
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
     }
 }

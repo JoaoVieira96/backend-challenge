@@ -41,6 +41,7 @@ public class StatisticResourceImpl implements StatisticResource {
         return response;
     }
 
+    // Couldn't implement this last api in time.
     @Override
     public ResponseEntity<Object> listYellow(Pageable pageable) {
         log.info("listYellow | REST request to evaluate data on yellow trips");
